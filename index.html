@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A small deployment test for our shared project.">
+  <title>First connection · Deployment test</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100svh; display: grid; place-items: center; padding: 28px; background: #f3f2eb; color: #173f35; font: 17px/1.6 system-ui, sans-serif; }
+    main { width: min(100%, 640px); }
+    .label { font-size: 12px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .mark { width: 64px; height: 64px; border-radius: 20px; background: #173f35; color: #d8fa7c; display: grid; place-items: center; font-size: 34px; margin: 35px 0; }
+    h1 { font-size: clamp(42px, 9vw, 76px); line-height: 1.03; letter-spacing: -.065em; margin: 0 0 24px; font-weight: 650; }
+    p { max-width: 510px; color: #4f655b; }
+    .card { background: white; padding: 26px; margin-top: 32px; border: 1px solid #dce2d8; border-radius: 20px; }
+    .card p { margin: 10px 0 22px; min-height: 3.2em; color: #173f35; font-size: 20px; }
+    button { border: 0; border-radius: 999px; background: #173f35; color: white; padding: 13px 20px; font: 600 15px system-ui, sans-serif; cursor: pointer; }
+    button:hover { background: #285b4e; }
+    button:focus-visible { outline: 3px solid #528713; outline-offset: 4px; }
+    footer { margin-top: 26px; font-size: 13px; color: #687a70; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="label">Our first deployment · v1</div>
+    <div class="mark" aria-hidden="true">↗</div>
+    <h1>One small push.<br>A real connection.</h1>
+    <p>This is our deployment test. A tiny page, published from GitHub, to make sure our workflow works from first edit to live URL.</p>
+    <section class="card" aria-labelledby="prompt-heading">
+      <div class="label" id="prompt-heading">A random conversation starter</div>
+      <p id="prompt" aria-live="polite">What’s something you’re excited to learn?</p>
+      <button id="shuffle" type="button">Try another question ↗</button>
+    </section>
+    <footer>Just a test page. No sign-in, contact collection, or app features.</footer>
+  </main>
+  <script>
+    const questions = [
+      'What’s something you’re excited to learn?',
+      'What project could you talk about for hours?',
+      'Who helped you get started in your field?',
+      'What’s a small idea you’d love to try?',
+      'What’s the best advice you’ve received recently?'
+    ];
+    let current = 0;
+    document.getElementById('shuffle').addEventListener('click', () => {
+      current = (current + 1 + Math.floor(Math.random() * (questions.length - 1))) % questions.length;
+      document.getElementById('prompt').textContent = questions[current];
+    });
+  </script>
+</body>
+</html>
